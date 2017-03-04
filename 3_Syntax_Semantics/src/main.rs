@@ -1,5 +1,8 @@
 fn main() {
 
+
+    //Variable bindings
+
     let x: i32 = 5;
     {
         let y: i32 = 3;
@@ -17,6 +20,12 @@ fn main() {
     print_sum(x,y);
 
     println!("x+1={}",add_one(x));
+
+
+    //Expressions and Statements
+
+    //Invalid: let x = (let y = 5); 
+
 
     println!("Finished!");
 }

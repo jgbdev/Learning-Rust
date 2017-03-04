@@ -1,0 +1,6 @@
+[package]
+name = "3_Syntax_Semantics"
+version = "0.1.0"
+authors = ["John Griffith <john.griffith@live.co.uk>"]
+
+[dependencies]

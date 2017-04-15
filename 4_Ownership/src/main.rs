@@ -83,11 +83,67 @@ fn main() {
     println!("base2 : {}", base2);
 
 
+    //References
+    //Use after free
+    //If we try and access a variable declared in a score, we get an error
+    //println!("{}", yy);
+
+
+    let yy : &i32;
+    let x = 5;
+    //yy = &x;
+    //println!("{}",yy);
+
+    //If we decalare the reference, before the variable it refers to we get the same
+    //error as above
+    //This is because resources in the same scope are freed in the opposite order that they
+    //were declared
 
 
 
+    //---------------------------
+    //Lifetimes
+    //Dangling pointer issue when borrowed resouce is freed
+
+    /*
+
+    let r;
+    {
+        let i = 1;
+        r = &i;
+    }
+
+    println!("{}",r);
+
+    */
+
+    //E.g r is still pointing to i, out of i's scope. Rust reports this error
+
+    //Sometimes the compiler can't deduce if a reference will be valid outside a block
+
+    let line = "lang:en=Hello World!";
+    let lang = "en";
+
+
+    let res;
+    {
+        let p = format!("lang:{}=",lang);
+        res = skip_prefex(line, p.as_str());
+    }
+    println!("{}",res);
+
+    //If skip_prefex block above would be invalid if skip_prefex didnn't have the Lifetime
+    //params. Else the compiler would not know if the reference returned is still living when
+    //calling println at the end of the block
 
 }
+
+
+
+fn skip_prefex<'a,'b>(line: &'a str, prefix: &'b str) -> &'a str {
+    line
+}
+
 
 
 

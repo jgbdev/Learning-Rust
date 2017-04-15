@@ -29,14 +29,63 @@ fn main() {
     //not just the point, like the above examples with Vectors
     //therefore there are no issues with race conditions and we are free to use the original var
 
-
+    //---------------------------
     //Borrowing
     //Pass reference of the variable to your function
     //The functionn then "borrows" ownership
     //The reference is then immutable in the funcntion
 
     bar(&v2);
-    println!("v after bar {:?}", v2)
+    println!("v after bar {:?}", v2);
+
+
+
+    //&mut reference
+    //&mut T allows mutation of the reference
+
+    let mut x = 5;
+    {
+        let y = &mut x;
+        *y += 1;
+    }
+
+    println!("{}",x);
+
+    //If we remove the scope brackets, it fails
+    //Here are the following rules for borrinw in Rust
+    //1. Any borrow must last for a scope no great than that of it's owner
+    //2. Either
+    //   a. One of more refrence (&T) to a resource
+    //   b. Exactly one mutable reference (&mut T)
+
+    //This is a similar definition to a data race, two pointers accessing memory at the same time
+    //One of the pointers is writing and not sychronized
+
+
+    //Thinking in scopes
+
+    let mut base = 5;
+    let y = &mut base;
+
+    *y += 1;
+    //println!(" base: {}", base);
+    //Accessing base here returns an error, as y can mutate base
+    //We need to end the scope of y, before we can access base
+
+
+    let mut base2 = 5;
+    {
+        let yy = &mut base2;
+        *yy += 1;
+
+    }
+
+    println!("base2 : {}", base2);
+
+
+
+
+
 
 }
 

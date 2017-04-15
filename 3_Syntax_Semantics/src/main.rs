@@ -116,6 +116,9 @@ fn main() {
     v.push(123);
     println!("New vector, v: {:?}" , v);
 
+    for i in &v {
+        println!("Ref to {}", i);
+    }
 
 
 

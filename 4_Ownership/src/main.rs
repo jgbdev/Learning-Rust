@@ -21,17 +21,33 @@ fn main() {
     //Copy types
 
     let vv = 1;
-    let va = v;
+    let va = vv;
 
-    println!("v is {}", v);
+    println!("vv is {}", vv);
 
     //Because i32 (As do all primitive types) implement the copy function, the data is moved,
     //not just the point, like the above examples with Vectors
     //therefore there are no issues with race conditions and we are free to use the original var
 
 
+    //Borrowing
+    //Pass reference of the variable to your function
+    //The functionn then "borrows" ownership
+    //The reference is then immutable in the funcntion
+
+    bar(&v2);
+    println!("v after bar {:?}", v2)
+
+}
 
 
+
+fn foo(v: &Vec<i32>){
+    //v.push(5); We can't do this, v is immutable
+}
+
+fn bar(v: &Vec<i32>){
+    println!("v in bar {:?}", v)
 }
 
 

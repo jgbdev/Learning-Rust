@@ -93,11 +93,29 @@ fn main() {
     let (x,y,z) = (1,2,3);
     //This overwrites the bindings in the previous section
 
-    //Tup[le indexing
+    //Tuple indexing
 
     let tuple = (x,y,z);
 
     println!("{} , {} , {}" , tuple.0, tuple.1 , tuple.2);
+
+
+
+    //Vectors
+    //Growable/Dynamic arrays
+
+    let mut v = vec![1,2,3,4,5];
+
+
+    //Index with usize type
+    let i: usize = 0;
+    println!("Hi! {}", v[i]);
+
+    //Add an item
+    println!("Old vector, v: {:?}" , v);
+    v.push(123);
+    println!("New vector, v: {:?}" , v);
+
 
 
 

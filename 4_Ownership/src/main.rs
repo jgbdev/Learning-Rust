@@ -136,6 +136,19 @@ fn main() {
     //params. Else the compiler would not know if the reference returned is still living when
     //calling println at the end of the block
 
+
+    //Lifelines in Structs
+    //struct PointRef<'a>
+    //A lifetime that last as least as long as the struct
+
+    
+
+}
+
+
+struct PointRef<'a>{
+    x : &'a mut i32,
+    y : &'a mut i32,
 }
 
 

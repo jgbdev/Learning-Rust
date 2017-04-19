@@ -22,6 +22,10 @@ struct Rectangle {
     p2 : Point,
 }
 
+trait HasArea {
+    fn area (&self)-> i32;
+}
+
 
 impl Rectangle {
     fn area(&self)-> i32 {
@@ -81,6 +85,7 @@ fn main() {
 
     let y: BoardGameTurn = BoardGameTurn::Move { squares : 1};
 
+
     //Move is in different scope, so preventing conflicts
     //Value of an enum type contains information about what variant it is
     //Sometimes called a `tagged union` as data includes a `tag` indicating what type it is
@@ -93,7 +98,25 @@ fn main() {
     //foo is identical to the enum constructor
 
 
+    //use
+    //use can reference nested types in an enum
+    use pass = BoardGameTurn::Pass;
+
+
+    //Traits
+    //Define rules about a functionality a type must provide
+    //Defines method signatures, which must be implemented
+
+    //E.g Rectangle has an area trait.
+    fn print_area<T>(shape: T)){
+        println!("This shape has an area of {}", shape.area());
+    }
+
 }
+
+
+
+
 
 fn foo(x: String) -> Message {
     Message::Write(x)

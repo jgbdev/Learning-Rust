@@ -137,13 +137,43 @@ fn main() {
     //calling println at the end of the block
 
 
+    //Example 1.
+
+    let (four,nine ) = (1,1);
+
+
+    print_refs(&four, &nine);
+
+failed_borrow();
+
     //Lifelines in Structs
     //struct PointRef<'a>
     //A lifetime that last as least as long as the struct
 
-    
+
 
 }
+//a,b lifeline must be at least as long as print_refs
+fn print_refs<'a , 'b>(x: &'a i32 , y: &'b i32){
+    println!("x is {} y is {}", x, y);
+}
+
+// A function which takes no arguments, but has a lifetime parameter `'a`.
+fn failed_borrow<'a>()  {
+    let _x = 12;
+    let y: &'a i32 = &_x;
+    // ERROR: `_x` does not live long enough
+    // Attempting to use the lifetime `'a` as an explicit type annotation
+    // inside the function will fail because the lifetime of `&_x` is shorter
+    // than that of `y`. A short lifetime cannot be coerced into a longer one.
+
+    //If _x was to last longer than the function, e.g a parameter, than the function would
+    //be valid. We could also remove 'a from y, which indicidates that y doesn't have to
+    //live at least as long as failed borrow
+
+
+}
+
 
 
 struct PointRef<'a>{

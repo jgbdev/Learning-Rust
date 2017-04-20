@@ -41,6 +41,11 @@ struct PointRef<'a>{
     y : &'a mut i32,
 }
 
+
+fn print_refs<'a , 'b>(x: &'a i32 , y: &'b i32{
+    println!("x is {} y is {}", x, y);
+})
+
 fn main() {
 
     //Structs
@@ -111,11 +116,7 @@ fn main() {
     fn print_area<T>(shape: T)){
         println!("This shape has an area of {}", shape.area());
     }
-
 }
-
-
-
 
 
 fn foo(x: String) -> Message {

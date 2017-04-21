@@ -121,6 +121,21 @@ fn main() {
     }
 
 
+    //If let
+    //Combine if and let
+
+    let option = divide(2.2,4.2);
+
+    match option {
+        Some(x) => { println!("{}",x)},
+        None => {},
+    }
+
+    //This can be reduced
+    if let Some(x) = option {
+        println!("{}",x);
+    }
+
 
 
 //
@@ -143,6 +158,16 @@ fn diverges() -> ! {
     //let y: i32 = 10; Becomes unreachable
 //}
 
+
+fn divide(num: f64, denom : f64)-> Option<f64> {
+
+    if(denom == 0.0){
+        None
+    }else{
+        Some(num/denom)
+    }
+
+}
 
 
 fn print_number(x: i32){

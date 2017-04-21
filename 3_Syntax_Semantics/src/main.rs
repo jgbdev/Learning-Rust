@@ -137,6 +137,13 @@ fn main() {
     }
 
 
+    //We can also use while let in a similar fashion
+    let mut v = vec![1,2,3,4];
+    while let Some(x) = v.pop(){
+        println!("{}", x);
+    }
+
+
 
 //
 
